@@ -1,0 +1,14 @@
+[project]
+name = "li-diffusion"
+version = "1.0.0"
+description = "Generation of lithium-ion battery data using a diffusion transformer model."
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "dragon-ml-toolbox[ml]>=22.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "nbstripout>=0.9.1",
+]
