@@ -19,7 +19,7 @@ PM.autoencoder = PM.results / "Autoencoder"
 
 ### Diffusion
 PM.diffusion = PM.results / "Diffusion"
-PM.diffusion_generation = PM.diffusion / "Generation"
+PM.generation = PM.results / "Diffusion Generation"
 
 
 # 3. Make directories and check status
