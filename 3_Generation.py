@@ -5,17 +5,19 @@ from ml_tools.ML_utilities import DragonArtifactFinder
 from ml_tools.utilities import save_dataframe_filename
 from ml_tools.path_manager import sanitize_filename
 from ml_tools.math_utilities import handle_negative_values, round_float_values
-from ml_tools.data_exploration import plot_value_distributions
+from ml_tools.data_exploration import plot_value_distributions, plot_numeric_overview_boxplot
 
 from paths import PM
-from helpers.constants import TARGET_capacity as TARGET, GENERATION_BATCH_SIZE
+from helpers.constants import TARGET_capacity as TARGET, EXPERIMENTAL_CAPACITY_RANGE
 
-# Constants
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {DEVICE}")
 
-SANITIZED_TARGET_NAME = sanitize_filename(TARGET)
 
+# Hyperparameters for generation
+TARGET_RANGE = range(EXPERIMENTAL_CAPACITY_RANGE[0], EXPERIMENTAL_CAPACITY_RANGE[1] + 1, 10)
+GENERATION_BATCH_SIZE = 1000
+GUIDANCE_SCALE = 3.0
 
 
 def create_sample_batch(guided_dit: DragonDiTGuided, autoencoder: DragonAutoencoder, target_value: float, guidance_scale: float):
@@ -33,7 +35,7 @@ def create_sample_batch(guided_dit: DragonDiTGuided, autoencoder: DragonAutoenco
     decoded_samples = round_float_values(df=decoded_samples, n=3)
 
     # batch info
-    batch_info = f"{SANITIZED_TARGET_NAME}-{target_value}-guidance-{guidance_scale}".replace('.', '_')
+    batch_info = f"{sanitize_filename(TARGET)}-{target_value}-guidance-{guidance_scale}".replace('.', '_')
     
     save_directory = PM.generation / batch_info
 
@@ -44,6 +46,17 @@ def create_sample_batch(guided_dit: DragonDiTGuided, autoencoder: DragonAutoenco
                             verbose=1)
     
     plot_value_distributions(df=decoded_samples, save_dir=save_directory)
+    
+    plot_numeric_overview_boxplot(df=decoded_samples, 
+                                  save_dir=save_directory, 
+                                  plot_title="Generated Distribution (Scaled) - Capacity " + str(target_value) + " mAh/g", 
+                                  strategy="scale", 
+                                  handle_zero_variance="constant")
+    
+    plot_numeric_overview_boxplot(df=decoded_samples, 
+                                  save_dir=save_directory, 
+                                  plot_title="Generated Distribution (Log) - Capacity " + str(target_value) + " mAh/g", 
+                                  strategy="log")
 
 
 def main():
@@ -56,12 +69,11 @@ def main():
     guided_dit = DragonDiTGuided.from_artifact_finder(dit_artifacts).to(DEVICE)
     
     # Generate new samples in loops
-    for TARGET_VALUE in [200, 220, 250, 300, 350]:
-        for GUIDANCE_SCALE in [1.0, 2.0, 3.0, 4.0, 5.0]:
-            create_sample_batch(guided_dit=guided_dit, 
-                            autoencoder=autoencoder, 
-                            target_value=TARGET_VALUE, 
-                            guidance_scale=GUIDANCE_SCALE)
+    for TARGET_VALUE in TARGET_RANGE:
+        create_sample_batch(guided_dit=guided_dit, 
+                        autoencoder=autoencoder, 
+                        target_value=TARGET_VALUE, 
+                        guidance_scale=GUIDANCE_SCALE)
 
 
 if __name__ == "__main__":

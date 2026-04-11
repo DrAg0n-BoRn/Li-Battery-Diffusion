@@ -8,11 +8,13 @@ PM = DragonPathManager(
 )
 
 # 2. Define directories and files.
-### Base files
-PM.processed_data_file = PM.start_data / "processed_data.csv" # From Lithium Battery optimization project
+### Start files - From Lithium Battery optimization project
+PM.original_data_file = PM.start_data / "original_data.csv"
+PM.schema_dir = PM.start_data / "Schema"
 
 ### Feature Engineering
-PM.engineering = PM.start_data / "Feature Engineering" # From Lithium Battery optimization project
+PM.engineering = PM.results / "Feature Engineering"
+PM.processed_data_file = PM.engineering / "processed_data.csv"
 
 ### Autoencoder
 PM.autoencoder = PM.results / "Autoencoder"
@@ -20,6 +22,10 @@ PM.autoencoder = PM.results / "Autoencoder"
 ### Diffusion
 PM.diffusion = PM.results / "Diffusion"
 PM.generation = PM.results / "Diffusion Generation"
+
+### Experimental data
+PM.experiment = PM.results / "Experiment"
+PM.experiment_data_file = PM.start_data / "experiment_data.csv"
 
 
 # 3. Make directories and check status
