@@ -12,3 +12,7 @@ dependencies = [
 dev = [
     "jupytext>=1.19.1",
 ]
+
+# Jupytext configuration
+[tool.jupytext]
+formats = "ipynb,md"
