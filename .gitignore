@@ -67,3 +67,6 @@ test.ipynb
 *.xlsx
 *.docx
 *.pptx
+
+# use Jupytext to convert Jupyter notebooks to .py files and ignore the .ipynb files
+*.ipynb
