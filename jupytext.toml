@@ -1,0 +1,2 @@
+# Always pair ipynb and py files
+formats = "ipynb,py:percent"
