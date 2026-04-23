@@ -5,7 +5,7 @@ from ml_tools.ML_utilities import DragonArtifactFinder
 from ml_tools.utilities import save_dataframe_filename
 from ml_tools.path_manager import sanitize_filename
 from ml_tools.math_utilities import handle_negative_values, round_float_values
-from ml_tools.data_exploration import plot_value_distributions, plot_numeric_overview_boxplot
+from ml_tools.data_exploration import plot_value_distributions, plot_numeric_overview_boxplot_macro
 
 from paths import PM
 from helpers.constants import TARGET_capacity as TARGET, EXPERIMENTAL_CAPACITY_RANGE
@@ -45,18 +45,14 @@ def create_sample_batch(guided_dit: DragonDiTGuided, autoencoder: DragonAutoenco
                             filename=f"generated-{GENERATION_BATCH_SIZE}",
                             verbose=1)
     
-    plot_value_distributions(df=decoded_samples, save_dir=save_directory)
+    # plot_value_distributions(df=decoded_samples, save_dir=save_directory)
     
-    plot_numeric_overview_boxplot(df=decoded_samples, 
-                                  save_dir=save_directory, 
-                                  plot_title="Generated Distribution (Scaled) - Capacity " + str(target_value) + " mAh/g", 
-                                  strategy="scale", 
-                                  handle_zero_variance="constant")
+    plot_numeric_overview_boxplot_macro(df=decoded_samples, 
+                                        save_dir=save_directory, 
+                                        plot_title="Generated Data Distribution - Capacity " + str(target_value) + " mAh/g", 
+                                        handle_zero_variance="constant",
+                                        font_scaling=1.5)
     
-    plot_numeric_overview_boxplot(df=decoded_samples, 
-                                  save_dir=save_directory, 
-                                  plot_title="Generated Distribution (Log) - Capacity " + str(target_value) + " mAh/g", 
-                                  strategy="log")
 
 
 def main():

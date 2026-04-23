@@ -5,7 +5,7 @@ description = "Generation of lithium-ion battery data using a diffusion transfor
 readme = "README.md"
 requires-python = "==3.12.*"
 dependencies = [
-    "dragon-ml-toolbox[ml]==22.6.0"
+    "dragon-ml-toolbox[ml]==22.11.2"
 ]
 
 [dependency-groups]
