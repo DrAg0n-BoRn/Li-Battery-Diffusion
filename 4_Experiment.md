@@ -8,7 +8,7 @@ jupyter:
       format_version: '1.3'
       jupytext_version: 1.19.1
   kernelspec:
-    display_name: .venv
+    display_name: li-diffusion
     language: python
     name: python3
 ---
@@ -27,6 +27,10 @@ from helpers.constants import TARGET_capacity as TARGET, EXPERIMENTAL_CAPACITY_R
 from paths import PM
 
 configure_cjk_fonts()
+```
+
+```python
+boxplot_dir = PM.experiment / "box plots"
 ```
 
 ## Training data overview
@@ -54,11 +58,9 @@ summarize_dataframe(df_train_reconstructed)
 ```
 
 ```python
-# Plots
-train_save_dir = PM.experiment / "Train Data Plots"
-
+# Plot
 plot_numeric_overview_boxplot_macro(df=df_train_reconstructed,
-                                    save_dir=train_save_dir,
+                                    save_dir=boxplot_dir,
                                     plot_title=f"Training Data Distribution - Capacity {EXPERIMENTAL_CAPACITY_RANGE[0]}-{EXPERIMENTAL_CAPACITY_RANGE[1]} mAh/g",
                                     handle_zero_variance="constant",
                                     font_scaling=1.5)
@@ -81,11 +83,9 @@ summarize_dataframe(df_experiment)
 ```
 
 ```python
-# Plots
-experiment_save_dir = PM.experiment / "Experiment Data Plots"
-
+# Plot
 plot_numeric_overview_boxplot_macro(df=df_experiment, 
-                                    save_dir=experiment_save_dir,
+                                    save_dir=boxplot_dir,
                                     plot_title=f"Experimental Data Distribution - Capacity {EXPERIMENTAL_CAPACITY_RANGE[0]}-{EXPERIMENTAL_CAPACITY_RANGE[1]} mAh/g",
                                     handle_zero_variance="constant",
                                     font_scaling=1.5)
