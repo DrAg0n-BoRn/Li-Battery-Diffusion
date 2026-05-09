@@ -119,7 +119,7 @@ trainer = ChosenTrainer(model=model,
 ## 5. Training
 
 ```python
-history = trainer.fit(epochs=500, batch_size=train_config.batch_size)
+history = trainer.fit(epochs=1000, batch_size=train_config.batch_size)
 ```
 
 ## 6. Evaluation

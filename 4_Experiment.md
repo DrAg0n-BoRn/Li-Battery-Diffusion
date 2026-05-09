@@ -94,7 +94,7 @@ plot_numeric_overview_boxplot_macro(df=df_experiment,
 ## Comparison plot
 
 ```python
-df_generated, _ = load_dataframe(PM.experiment / "generated-250.csv") # Must be placed manually in the directory after generation, as it is an output file.
+df_generated, _ = load_dataframe("results/Diffusion Generation/Target-250-Guidance-3_0/Generated-500-samples.csv")
 ```
 
 ```python
