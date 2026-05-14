@@ -36,7 +36,7 @@ from torch.optim import AdamW
 from ml_tools.ML_models_diffusion import DragonAutoencoder
 
 from paths import PM
-from helpers.constants import TARGET_capacity as TARGET, EMBEDDING_DIMENSION
+from helpers.constants import TARGET_capacity as TARGET
 ```
 
 ```python
@@ -100,8 +100,8 @@ tokenizer = DragonAutoencoder.from_artifact_finder(artifact_finder)
 
 ```python
 model_params = ChosenModelParams(
-    embed_dim=EMBEDDING_DIMENSION,
-    seq_len=schema.number_of_features(),
+    embed_dim=tokenizer.embedding_dim,
+    seq_len=schema.number_of_features,
     num_heads=4,
     depth=4
 )

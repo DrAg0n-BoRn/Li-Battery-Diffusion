@@ -33,7 +33,6 @@ from ml_tools.keys import TaskKeys
 from torch.optim import AdamW
 
 from paths import PM
-from helpers.constants import EMBEDDING_DIMENSION
 ```
 
 ```python
@@ -90,7 +89,7 @@ dataset = ChosenDataset(pandas_df=df,
 ```python
 model_params = ChosenModelParams(
     schema=schema,
-    embedding_dim=EMBEDDING_DIMENSION,
+    embedding_dim=128,
     fourier_sigma=1
 )
 
@@ -128,7 +127,7 @@ history = trainer.fit(epochs=1000, batch_size=train_config.batch_size)
 trainer.evaluate(model_checkpoint="best",
                 test_data=dataset.test_dataset,
                 val_format_configuration=ChosenMetricsConfig(hist_color="teal", cmap="BuPu"),
-                test_format_configuration=ChosenMetricsConfig(hist_color="violet", cmap="Oranges"),
+                test_format_configuration=ChosenMetricsConfig(hist_color="violet", cmap="Oranges", num_color="tab:cyan"),
                 )
 ```
 

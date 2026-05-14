@@ -5,9 +5,6 @@ TARGET_first_coulombic_eff = "First Coulombic Efficiency(%)"
 
 EXPERIMENTAL_CAPACITY_RANGE = (200, 290)
 
-# Model parameters
-EMBEDDING_DIMENSION = 128
-
 # Ranges provided by experimental group
 CONTINUOUS_RANGE = {
     'Fraction_Li': (0.1, 2.0),

@@ -31,7 +31,7 @@ def main():
                                          encoder=autoencoder,
                                          device=DEVICE)
     
-    generator.generate_plot_multi(targets=TARGET_RANGE, # type: ignore
+    generator.generate_plot_multi(targets=TARGET_RANGE,
                                   batch_size=GENERATION_BATCH_SIZE,
                                   guidance_scale=GUIDANCE_SCALE,
                                   ode_steps=30,
