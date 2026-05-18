@@ -404,11 +404,11 @@ wheels = [
 
 [[package]]
 name = "dragon-ml-toolbox"
-version = "22.14.0"
+version = "22.14.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/8f/d5/a66f89f372c82483009898479d31c23781d6413a507767b0bb979f2f0691/dragon_ml_toolbox-22.14.0.tar.gz", hash = "sha256:da4c6ff25d1c2f69bf210e31883e7b691002bf84b134519cbb92b087137b5603", size = 364228, upload-time = "2026-05-15T10:09:28.001Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/38/34/155a66fe49fa0fc8f3167773f59d9b8b8190236f35e29974aa2f80c8e310/dragon_ml_toolbox-22.14.1.tar.gz", hash = "sha256:abec8ebcc56a98bc5d91c883c3d488f65a4a273f82beffd060511ec5629a83fb", size = 364311, upload-time = "2026-05-18T07:51:06.788Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/93/04/6c745f0643fce5fc96aa0f0d26b2c750116cebbc42dd5e9428dc156f1963/dragon_ml_toolbox-22.14.0-py3-none-any.whl", hash = "sha256:599cd33a7f0c12208ff90eecb7782c8ba8a9ad66312043d5b8d9f4c6b6dbb4fa", size = 459441, upload-time = "2026-05-15T10:09:33.933Z" },
+    { url = "https://files.pythonhosted.org/packages/70/1d/17d38ac67361a6d946cef873a81ed2f09ad1375c7b0aae1ee952df93720c/dragon_ml_toolbox-22.14.1-py3-none-any.whl", hash = "sha256:1546d2479bcbb0af83a9081b390744297a54d1592ba3ca71a7abbb5d770e83f1", size = 459549, upload-time = "2026-05-18T07:51:04.055Z" },
 ]
 
 [package.optional-dependencies]
@@ -993,7 +993,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "dragon-ml-toolbox", extras = ["ml"], specifier = "==22.14.0" }]
+requires-dist = [{ name = "dragon-ml-toolbox", extras = ["ml"], specifier = "==22.14.1" }]
 
 [package.metadata.requires-dev]
 dev = [{ name = "jupytext", specifier = ">=1.19.1" }]
