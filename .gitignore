@@ -55,6 +55,7 @@ venv.bak/
 *.bmp
 *.gif
 *.tiff
+Icon?
 
 # Files and Directories
 *.pth
